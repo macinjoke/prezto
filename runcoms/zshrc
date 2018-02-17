@@ -11,3 +11,96 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+alias C='xsel -ib'
+
+# git alias
+alias glog='git log --graph --decorate --all'
+alias g='git'
+alias tiga='tig --all'
+alias tigs='tig status'
+alias gl='cd $(ghq root)/$(ghq list | peco)'
+alias hb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+alias hn='open https://github.com/new'
+alias allstatus='ls -1 $MAKKY05 | xargs -t -I{} git -C $MAKKY05/{} status --short'
+alias dotstatus='cat $MAKKY05/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
+alias alldrypull='ls -1 $MAKKY05 | xargs -t -I{} git -C $MAKKY05/{} pull --dry-run'
+alias dotdrypull='cat $MAKKY05/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
+
+alias L='less'
+alias P='peco'
+alias N='terminal-notifier -message "コマンド完了" -activate "com.googlecode.iterm2"'
+# ls Util
+alias la='ls -A'
+alias lla='ll -A'
+alias lh='ls -d .*'
+
+alias tree1='tree -L 1'
+alias tree2='tree -L 2'
+alias tree3='tree -L 3'
+alias tree4='tree -L 4'
+alias tree5='tree -L 5'
+alias tree6='tree -L 6'
+alias tree7='tree -L 7'
+alias tree8='tree -L 8'
+alias tree9='tree -L 9'
+
+alias makeutil="./configure ; echo END configure; make; echo END make; sudo make install"
+
+alias path='echo $PATH | perl -pe "s/:/\n/g"'
+
+alias atomt='atom ~/Documents/tmp.md'
+
+export EDITOR=vim
+export VISUAL=vim
+export PATH=$PATH:~/.myScript
+export MAKKY05=~/.ghq/github.com/makky05
+export ICLOUD=~/Library/Mobile\ Documents
+
+# node project path setting
+export PATH=$PATH:./node_modules/.bin
+
+# scala binary path
+export SCALA_HOME=~/src/scala
+export PATH=$PATH:$SCALA_HOME/bin
+
+# # tmuxの設定
+# if [[ ! -n $TMUX ]]; then
+#   tmux new-session && exit
+# fi
+
+# pecoの設定
+## のインクリメンタルサーチ
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+# cdしたらls設定
+auto_cdls()
+{
+    if [ "$OLDPWD" != "$PWD" ]; then
+        ls
+        OLDPWD="$PWD"
+    fi
+}
+PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
+
+function ol() {
+    open http://localhost:$1
+}
+
+function urlencode {
+    echo "$1" | nkf -wWMQ | tr = %
+}
+
+eval "$(hub alias -s)"
+
+setopt nocorrect
+
+# load local setting
+[ -f ~/.zshlocal ] && source ~/.zshlocal
+
