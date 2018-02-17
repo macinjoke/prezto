@@ -1,0 +1,17 @@
+#
+# local env setting for Ubuntu 14.04
+#
+#
+
+## ruby setting
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims/ruby:$PATH"
+eval "$(rbenv init -)"
+## python setting
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+
+export PATH=$PATH:~/processing-3.0.1
+
+eval "$(pyenv virtualenv-init -)"

@@ -1,0 +1,21 @@
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+prompt steeef
+
+precmd() { eval "$PROMPT_COMMAND" }
+
+export TDUWORK="/Volumes/授業用ワークスペース"
+export TDUMYWORK="/Volumes/授業用ワークスペース/千住キャンパス/後期/大学院"
+
+export PGDATA=/usr/local/var/postgres
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+nvm use default
+npm_dir=${NVM_PATH}_modules
+export NODE_PATH=$npm_dir
+
+# 毎回実行しなくていいように設定を反映させるコマンドも書いておく
+source ~/.nvm/nvm.sh
