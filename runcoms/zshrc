@@ -49,7 +49,42 @@ alias makeutil="./configure ; echo END configure; make; echo END make; sudo make
 
 alias path='echo $PATH | perl -pe "s/:/\n/g"'
 
-alias atomt='atom ~/Documents/tmp.md'
+# とっさにメモ
+alias atomt='atom ~/tmp.md'
+
+# 色表示 https://qiita.com/dojineko/items/49aa30018bb721b0b4a9
+alias color='for fore in `seq 30 37`; do printf "\e[${fore}m \\\e[${fore}m \e[m\n"; for mode in 1 4 5; do printf "\e[${fore};${mode}m \\\e[${fore};${mode}m \e[m"; for back in `seq 40 47`; do printf "\e[${fore};${back};${mode}m \\\e[${fore};${back};${mode}m \e[m"; done; echo; done; echo; done; printf " \\\e[m\n"'
+
+# ------- pecoで選択したものを ls, rm, tree, cat, vimする--------
+function pecolize() {
+  if [ $# == "1" ]; then
+    file=`ls |peco`
+    echo "\e[32;1m$1\e[m \e[32;1;4m$file\e[m"
+    eval '$1 $file'
+  elif [ $# == "2" ]; then
+    file=`ls $2 |peco`
+    echo "\e[32;1m$1\e[m \e[32;1;4m$2/$file\e[m"
+    eval '$1 $2/$file'
+  else
+    echo "invalid argument"
+  fi
+}
+function lsp() {
+  pecolize ls $@
+}
+function rmp() {
+  pecolize rm $@
+}
+function treep() {
+  pecolize tree $@
+}
+function catp() {
+  pecolize cat $@
+}
+function vimp() {
+  pecolize vim $@
+}
+# --------------------------------------------------------------
 
 export EDITOR=vim
 export VISUAL=vim
