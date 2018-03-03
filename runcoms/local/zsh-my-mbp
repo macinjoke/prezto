@@ -13,6 +13,8 @@ export PGDATA=/usr/local/var/postgres
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# なぜかデフォルトでprodctionになっていたので追加 2018-03-03
+export NODE_ENV="development"
 
 # ----ここらへん書かなくても良いっぽい多分-----
 # nvm use default
