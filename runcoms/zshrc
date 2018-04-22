@@ -22,10 +22,10 @@ alias tigs='tig status'
 alias gl='cd $(ghq root)/$(ghq list | peco)'
 alias hb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias hn='open https://github.com/new'
-alias allstatus='ls -1 $MAKKY05 | xargs -t -I{} git -C $MAKKY05/{} status --short'
-alias dotstatus='cat $MAKKY05/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
-alias alldrypull='ls -1 $MAKKY05 | xargs -t -I{} git -C $MAKKY05/{} pull --dry-run'
-alias dotdrypull='cat $MAKKY05/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
+alias allstatus='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} status --short'
+alias dotstatus='cat $MACINJOKE/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
+alias alldrypull='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} pull --dry-run'
+alias dotdrypull='cat $MACINJOKE/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
 
 alias L='less'
 alias P='peco'
@@ -89,7 +89,7 @@ function vimp() {
 export EDITOR=vim
 export VISUAL=vim
 export PATH=$PATH:~/.myScript
-export MAKKY05=~/.ghq/github.com/makky05
+export MACINJOKE=~/.ghq/github.com/MACINJOKE
 export ICLOUD=~/Library/Mobile\ Documents
 
 # node project path setting
