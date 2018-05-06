@@ -1,3 +1,4 @@
-# macinjoke zsh environment management
-forked by [prezto](https://github.com/sorin-ionescu/prezto)
+# prezto
+macinjoke zsh environment management.
+forked from [prezto](https://github.com/sorin-ionescu/prezto)
 
