@@ -6,4 +6,4 @@ ln -s .ghq/github.com/macinjoke/prezto/runcoms/zprofile ~/.zprofile
 ln -s .ghq/github.com/macinjoke/prezto/runcoms/zshenv ~/.zshenv
 ln -s .ghq/github.com/macinjoke/prezto/runcoms/zshrc ~/.zshrc
 # run depending on your pc environment
-# ln -s .ghq/github.com/macinjoke/prezto/runcoms/local/[hoge] ~/.zshenv
+# ln -s .ghq/github.com/macinjoke/prezto/runcoms/local/[hoge] ~/.zshlocal
