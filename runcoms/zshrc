@@ -12,6 +12,8 @@ fi
 
 # Customize to your needs...
 
+prompt steeef
+
 alias C='xsel -ib'
 
 # git alias
