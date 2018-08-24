@@ -101,6 +101,9 @@ export PATH=$PATH:./node_modules/.bin
 export SCALA_HOME=~/src/scala
 export PATH=$PATH:$SCALA_HOME/bin
 
+# pipenv .venv setting
+export PIPENV_VENV_IN_PROJECT=true
+
 # # tmuxの設定
 # if [[ ! -n $TMUX ]]; then
 #   tmux new-session && exit
