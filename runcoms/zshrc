@@ -21,7 +21,8 @@ alias glog='git log --graph --decorate --all'
 alias g='git'
 alias tiga='tig --all'
 alias tigs='tig status'
-alias gl='cd $(ghq root)/$(ghq list | peco)'
+alias gl='cd $(ghq root)/$(echo -e "$(ghq list)$(various)" | peco)'
+alias various='cd $(ghq root); ls -1d github.com/macinjoke/various/*/ | xargs -I{} bash -c "ls -1d {}*/ 2>/dev/null"; cd - >/dev/null'
 alias hb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias hn='open https://github.com/new'
 alias allstatus='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} status --short'
@@ -92,6 +93,7 @@ export EDITOR=vim
 export VISUAL=vim
 export PATH=$PATH:~/.myScript
 export MACINJOKE=~/.ghq/github.com/MACINJOKE
+export VARIOUS=$MACINJOKE/various
 export ICLOUD=~/Library/Mobile\ Documents
 
 # node project path setting
@@ -120,14 +122,15 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 # cdしたらls設定
-auto_cdls()
-{
-    if [ "$OLDPWD" != "$PWD" ]; then
-        ls
-        OLDPWD="$PWD"
-    fi
-}
-PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
+# 他のcd の出力を使うscript に影響がでてめんどいのでとりあえずOFFにした
+# auto_cdls()
+# {
+#     if [ "$OLDPWD" != "$PWD" ]; then
+#         ls
+#         OLDPWD="$PWD"
+#     fi
+# }
+# PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'auto_cdls
 
 function ol() {
     open http://localhost:$1
