@@ -26,9 +26,9 @@ alias various='cd $(ghq root); ls -1d github.com/macinjoke/various/*/ | xargs -I
 alias hb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias hn='open https://github.com/new'
 alias allstatus='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} status --short'
-alias dotstatus='cat $MACINJOKE/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
+alias dotstatus='cat $MACINJOKE/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
 alias alldrypull='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} pull --dry-run'
-alias dotdrypull='cat $MACINJOKE/various/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
+alias dotdrypull='cat $MACINJOKE/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
 
 alias L='less'
 alias P='peco'
