@@ -29,6 +29,7 @@ alias allstatus='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} status --
 alias dotstatus='cat $MACINJOKE/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} status --short'
 alias alldrypull='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} pull --dry-run'
 alias dotdrypull='cat $MACINJOKE/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
+alias ghinit='git init && git commit --allow-empty -m "first empty commit" && hub create && git push -u origin master && hub browse'
 
 alias L='less'
 alias P='peco'
