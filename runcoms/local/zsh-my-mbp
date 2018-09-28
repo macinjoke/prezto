@@ -30,3 +30,6 @@ export LANG=en_US.UTF-8
 # source ~/.nvm/nvm.sh
 # ---------------------------------------------
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
