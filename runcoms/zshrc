@@ -33,7 +33,8 @@ alias ghinit='git init && git commit --allow-empty -m "first empty commit" && hu
 
 alias L='less'
 alias P='peco'
-alias N='terminal-notifier -message "コマンド完了" -activate "com.googlecode.iterm2"'
+alias n='terminal-notifier -message "コマンド完了" -sound Glass -activate "com.googlecode.iterm2"'
+# PROMPT_COMMAND="$PROMPT_COMMAND; N" # 全てのコマンドで通知を鳴らす変態設定
 # ls Util
 alias la='ls -A'
 alias lla='ll -A'
