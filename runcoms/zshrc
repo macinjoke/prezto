@@ -114,6 +114,10 @@ export PIPENV_VENV_IN_PROJECT=true
 # Hyperledger Fabric setting
 export PATH=$PATH:~/.ghq/github.com/hyperledger/fabric-samples/bin
 
+# kibana setting
+export KIBANA_HOME=~/src/kibana-6.5.0-darwin-x86_64
+export PATH=$PATH:$KIBANA_HOME/bin
+
 # # tmuxの設定
 # if [[ ! -n $TMUX ]]; then
 #   tmux new-session && exit
