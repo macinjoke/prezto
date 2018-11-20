@@ -93,6 +93,7 @@ function vimp() {
 }
 # --------------------------------------------------------------
 
+export HISTSIZE=100000
 export EDITOR=vim
 export VISUAL=vim
 export PATH=$PATH:~/.myScript
