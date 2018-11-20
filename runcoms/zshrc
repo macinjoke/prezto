@@ -14,7 +14,7 @@ fi
 
 prompt steeef
 
-alias C='xsel -ib'
+alias C='pbcopy'
 
 # git alias
 alias glog='git log --graph --decorate --all'
