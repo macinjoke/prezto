@@ -62,36 +62,59 @@ alias color='for fore in `seq 30 37`; do printf "\e[${fore}m \\\e[${fore}m \e[m\
 
 alias bcli='bitcoin-cli'
 
-# ------- pecoで選択したものを ls, rm, tree, cat, vimする--------
-function pecolize() {
-  if [ $# == "1" ]; then
-    file=`ls |peco`
-    echo "\e[32;1m$1\e[m \e[32;1;4m$file\e[m"
-    eval '$1 $file'
-  elif [ $# == "2" ]; then
-    file=`ls $2 |peco`
-    echo "\e[32;1m$1\e[m \e[32;1;4m$2/$file\e[m"
-    eval '$1 $2/$file'
+# start ------------ peco utility --------------------------------------
+
+function pecofind() { # find コマンドの出力結果をpeco する
+  if [ $# -eq 0 ]; then
+    find . | peco
   else
-    echo "invalid argument"
+    find $1 | peco
   fi
 }
+function pecofindd() { # find コマンドの出力結果をpeco する。 ファイルが選ばれたら1つ手前のディレクトリを返す
+  if [ $# -eq 0 ]; then
+    finded=`find . | peco`
+  else
+    finded=`find $1 | peco`
+  fi
+  if [ -f $finded ]; then
+    echo $finded | perl -pe 's/\/[^\/]*$/\n/g'
+  else
+    echo $finded
+  fi
+}
+function cdp() {
+  dir=$(pecofindd $1)
+  echo "\e[32;1mcd\e[m \e[32;1;4m$dir\e[m"
+  cd $dir
+}
 function lsp() {
-  pecolize ls $@
+  file=$(pecofind $1)
+  echo "\e[32;1mls\e[m \e[32;1;4m$file\e[m"
+  ls $file
 }
 function rmp() {
-  pecolize rm $@
+  file=$(pecofind $1)
+  echo "\e[32;1mrm\e[m \e[32;1;4m$file\e[m"
+  rm $file
 }
 function treep() {
-  pecolize tree $@
+  file=$(pecofind $1)
+  echo "\e[32;1mtree\e[m \e[32;1;4m$file\e[m"
+  tree $file
 }
 function catp() {
-  pecolize cat $@
+  file=$(pecofind $1)
+  echo "\e[32;1mcat\e[m \e[32;1;4m$file\e[m"
+  cat $file
 }
 function vimp() {
-  pecolize vim $@
+  file=$(pecofind $1)
+  echo "\e[32;1mvim\e[m \e[32;1;4m$file\e[m"
+  vim $file
 }
-# --------------------------------------------------------------
+
+# end ------------ peco utility --------------------------------------
 
 export HISTSIZE=100000
 export EDITOR=vim
