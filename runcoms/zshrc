@@ -125,7 +125,7 @@ export VARIOUS=$MACINJOKE/various
 export ICLOUD=~/Library/Mobile\ Documents
 
 # node project path setting
-export PATH=$PATH:./node_modules/.bin
+export PATH=./node_modules/.bin:$PATH
 
 # scala binary path
 export SCALA_HOME=~/src/scala
