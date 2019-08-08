@@ -5,7 +5,7 @@ eval "$(pyenv init -)"
 precmd() { eval "$PROMPT_COMMAND" }
 
 export TDUWORK="/Volumes/授業用ワークスペース"
-export TDUMYWORK="/Volumes/授業用ワークスペース/千住キャンパス/後期/大学院"
+export TDUMYWORK="/Volumes/授業用ワークスペース/千住キャンパス/前期/大学院"
 
 export PGDATA=/usr/local/var/postgres
 

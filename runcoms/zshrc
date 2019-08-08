@@ -31,9 +31,13 @@ alias alldrypull='ls -1 $MACINJOKE | xargs -t -I{} git -C $MACINJOKE/{} pull --d
 alias dotdrypull='cat $MACINJOKE/setting_files/dotfiles | xargs -t -I{} git -C `ghq root`/github.com/{} pull --dry-run'
 alias ghinit='git init && git commit --allow-empty -m "first empty commit" && hub create && git push -u origin master && hub browse'
 
+# JavaScript alias
+alias y=yarn
+alias n=npm
+
 alias L='less'
 alias P='peco'
-alias n='terminal-notifier -message "コマンド完了" -sound Glass -activate "com.googlecode.iterm2"'
+alias N='terminal-notifier -message "コマンド完了" -sound Glass -activate "com.googlecode.iterm2"'
 # PROMPT_COMMAND="$PROMPT_COMMAND; N" # 全てのコマンドで通知を鳴らす変態設定
 # ls Util
 alias la='ls -A'
