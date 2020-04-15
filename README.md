@@ -11,7 +11,7 @@ https://qiita.com/nenokido2000/items/763a4af5c161ff5ede68
 
 ```
 cd ~/.ghq/github.com/macinjoke
-git clone --recursive https://github.com/macinjoke/prezto.git
+git clone --recursive git@github.com:macinjoke/prezto.git
 ```
 
 run migrate.sh
