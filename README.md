@@ -14,4 +14,5 @@ cd ~/.ghq/github.com/macinjoke
 git clone --recursive https://github.com/macinjoke/prezto.git
 ```
 
-run migrate.sh ( ホームディレクトリで、 `~/.ghq/github.com/macinjoke/prezto/migrate.sh` )
+run migrate.sh
+
