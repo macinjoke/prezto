@@ -215,10 +215,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# load local setting
-[ -f ~/.zshlocal ] && source ~/.zshlocal
-
-
 # added by travis gem
 [ -f /Users/makinoshunni/.travis/travis.sh ] && source /Users/makinoshunni/.travis/travis.sh
 
