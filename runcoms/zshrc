@@ -66,6 +66,8 @@ alias color='for fore in `seq 30 37`; do printf "\e[${fore}m \\\e[${fore}m \e[m\
 
 alias bcli='bitcoin-cli'
 
+RPROMPT='%*'
+
 # start ------------ peco utility --------------------------------------
 
 function pecofind() { # find コマンドの出力結果をpeco する
@@ -150,6 +152,11 @@ export PATH=$PATH:$KIBANA_HOME/bin
 #   tmux new-session && exit
 # fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
+
 # pecoの設定
 ## のインクリメンタルサーチ
 function peco-history-selection() {
@@ -183,9 +190,40 @@ eval "$(hub alias -s)"
 
 setopt nocorrect
 
+# direnv の設定
+eval "$(direnv hook zsh)"
+
+# .nvmrc の設定
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 # load local setting
 [ -f ~/.zshlocal ] && source ~/.zshlocal
 
 
 # added by travis gem
 [ -f /Users/makinoshunni/.travis/travis.sh ] && source /Users/makinoshunni/.travis/travis.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/macinjoke/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/macinjoke/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/macinjoke/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/macinjoke/google-cloud-sdk/completion.zsh.inc'; fi

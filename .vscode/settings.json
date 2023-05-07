@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "modules": true,
+    ".git": true,
+  },
+  "search.exclude": {
+    "modules": true,
+    ".git": true,
+  }
+}
