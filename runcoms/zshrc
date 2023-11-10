@@ -248,7 +248,7 @@ function precmd() {
     runtime=$((SECONDS-timer))
     timer=
     # 通知の閾値(秒)
-    threshold=10
+    threshold=20
 
     # 実行時間が閾値を超えた場合、通知を送る
     if [[ $runtime -gt $threshold ]]; then
