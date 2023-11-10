@@ -253,7 +253,8 @@ function precmd() {
     # 実行時間が閾値を超えた場合、通知を送る
     if [[ $runtime -gt $threshold ]]; then
       runtime_m=$((runtime/60))
-      message="所要時間 $runtime_m 分。($threshold 秒を超えると通知)"
+      runtime_s=$((runtime%60))
+      message="所要時間 $runtime_m 分 $runtime_s 秒。($threshold 秒を超えると通知)"
       title="コマンド完了通知"
       osascript -e "display notification \"$message\" with title \"$title\" sound name \"default\""
     fi
