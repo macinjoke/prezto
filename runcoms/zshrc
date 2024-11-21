@@ -34,6 +34,7 @@ alias ghinit='git init && git commit --allow-empty -m "first empty commit" && hu
 # JavaScript alias
 alias y=yarn
 alias n=npm
+alias p=pnpm
 alias b=bun
 
 alias L='less'
