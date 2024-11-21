@@ -148,6 +148,13 @@ export PATH=$PATH:~/.ghq/github.com/hyperledger/fabric-samples/bin
 export KIBANA_HOME=~/src/kibana-6.5.0-darwin-x86_64
 export PATH=$PATH:$KIBANA_HOME/bin
 
+# Android SDK setting
+export PATH=$PATH:~/Library/Android/sdk/tools/bin
+export PATH=$PATH:~/Library/Android/sdk/build-tools/33.0.2
+export PATH=$PATH:~/Library/Android/sdk/platform-tools
+
+alias bundletool='java -jar ~/bundletool-all-1.15.6.jar'
+
 # # tmuxの設定
 # if [[ ! -n $TMUX ]]; then
 #   tmux new-session && exit
