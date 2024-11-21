@@ -267,3 +267,12 @@ function precmd() {
     fi
   fi
 }
+
+# bun completions
+[ -s "/Users/macinjoke/.bun/_bun" ] && source "/Users/macinjoke/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
