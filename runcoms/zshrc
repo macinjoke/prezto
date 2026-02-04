@@ -21,7 +21,7 @@ alias glog='git log --graph --decorate --all'
 alias g='git'
 alias tiga='tig --all'
 alias tigs='tig status'
-alias gl='cd $(ghq root)/$(echo -e "$(ghq list)$(various)" | peco)'
+alias gl='cd $(ghq root)/$(echo -e "$(ghq list)\n$(various)" | peco)'
 alias various='cd $(ghq root); ls -1d github.com/macinjoke/various/*/ | xargs -I{} bash -c "ls -1d {}*/ 2>/dev/null"; cd - >/dev/null'
 alias hb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias hn='open https://github.com/new'
@@ -282,3 +282,7 @@ alias claude="/Users/macinjoke/.claude/local/claude"
 # sops
 export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:572300094367:key/726fd2e8-8fd1-49ee-8aa8-f631a4848792"
 
+# volta
+# zshrcにも設定しているが、ターミナル上でPATHでvoltaが優先されなかったのでこちらにも書いている
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
