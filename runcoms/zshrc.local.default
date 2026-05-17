@@ -1,0 +1,15 @@
+# Template for runcoms/zshrc.local
+#
+# このファイルは git 管理されているテンプレートです。
+# 秘匿情報を含む値は runcoms/zshrc.local に書いてください
+# (.gitignore で除外されているため git には上がりません)。
+#
+# セットアップ手順:
+#   cp runcoms/zshrc.local.default runcoms/zshrc.local
+#   chmod 600 runcoms/zshrc.local
+#   # その後、runcoms/zshrc.local を編集して実際の値を入れる
+#
+# zshrc 末尾で存在すれば source される。
+
+# Honcho API key
+export HONCHO_API_KEY=""
