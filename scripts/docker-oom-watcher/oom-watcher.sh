@@ -20,28 +20,27 @@ if ! command -v docker >/dev/null 2>&1; then
   exit 127
 fi
 
-# osascript は macOS 専用。Linux 等では実行不可
-if ! command -v osascript >/dev/null 2>&1; then
-  echo "[oom-watcher] osascript が見つかりません (本スクリプトは macOS 専用)" >&2
+# terminal-notifier は通知パネル(Alert)スタイルにできて閉じるまで残せる。
+# brew install terminal-notifier で導入する想定。
+if ! command -v terminal-notifier >/dev/null 2>&1; then
+  echo "[oom-watcher] terminal-notifier が見つかりません (brew install terminal-notifier)" >&2
   exit 127
 fi
 
 # macOS 通知センターへ通知を表示する。
-# 通知本文に表示する name / image をエスケープしてから AppleScript に渡す。
 # 通知音は "Sosumi" (短く存在感のあるシステム音)。
+# System Settings → Notifications → terminal-notifier を Alerts にすると
+# クリックするまで通知パネルが残るようになる。
 notify() {
   local name="${1:-unknown}"
   local image="${2:-?}"
 
-  # AppleScript 中のダブルクォートをエスケープ (二重起動防止のため安全側)
-  local safe_name
-  safe_name=$(printf '%s' "$name" | sed 's/"/\\"/g')
-  local safe_image
-  safe_image=$(printf '%s' "$image" | sed 's/"/\\"/g')
-
-  osascript <<APPLESCRIPT
-display notification "container: ${safe_name}\nimage: ${safe_image}" with title "🚨 Docker OOM killed" sound name "Sosumi"
-APPLESCRIPT
+  terminal-notifier \
+    -title "🚨 Docker OOM killed" \
+    -message "container: ${name}"$'\n'"image: ${image}" \
+    -sound Sosumi \
+    -group "docker-oom-watcher:${name}" \
+    -ignoreDnD >/dev/null || true
 
   # launchd の StandardOutPath に流すための痕跡ログ (タイムスタンプ付き)
   printf '[oom-watcher] %s — %s (image: %s)\n' \
